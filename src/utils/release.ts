@@ -1,6 +1,7 @@
 export const ALAP_PACKAGE_ID = 'com.aistudio.alapchat.xmrqtv';
 export const UPDATES_SITE_URL = 'https://alap-updates.netlify.app';
 export const VERSION_JSON_URL = `${UPDATES_SITE_URL}/version.json`;
+export const GITHUB_LATEST_APK_URL = 'https://github.com/Maiyas-Ahmed/alap-android/releases/latest/download/alap-latest.apk';
 export const CACHE_STORAGE_KEY = 'alap_cached_release_v1';
 
 export interface ReleaseInfo {

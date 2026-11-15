@@ -3,6 +3,7 @@ import type { Language, SiteTranslations } from '../data/translations';
 import {
   ALAP_PACKAGE_ID,
   UPDATES_SITE_URL,
+  GITHUB_LATEST_APK_URL,
   formatReleaseDate,
   toLocalizedDigits,
   type ReleaseFetchResult,
@@ -56,27 +57,15 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              {release ? (
-                <a
-                  href={release.apkUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-[46px] items-center justify-center gap-2.5 rounded-xl bg-[#008069] px-6 py-3 text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-colors duration-150 hover:bg-[#006b57] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#008069]"
-                >
-                  <DownloadArrowIcon className="h-4 w-4 shrink-0" />
-                  <span>{t.hero.downloadBtn}</span>
-                </a>
-              ) : (
-                <a
-                  href={UPDATES_SITE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-[46px] items-center justify-center gap-2.5 rounded-xl bg-[#008069] px-6 py-3 text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-colors duration-150 hover:bg-[#006b57] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#008069]"
-                >
-                  <ExternalArrowIcon className="h-4 w-4 shrink-0" />
-                  <span>{t.hero.fallbackBtn}</span>
-                </a>
-              )}
+              <a
+                href={GITHUB_LATEST_APK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[46px] items-center justify-center gap-2.5 rounded-xl bg-[#008069] px-6 py-3 text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-colors duration-150 hover:bg-[#006b57] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#008069]"
+              >
+                <DownloadArrowIcon className="h-4 w-4 shrink-0" />
+                <span>{t.hero.downloadBtn}</span>
+              </a>
 
               <a
                 href="#features"
@@ -191,40 +180,28 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Card Bottom Primary Download & Fallback Mirror Link */}
               <div className="mt-6 border-t border-slate-100 pt-5">
-                {release ? (
-                  <div className="flex flex-col gap-2.5">
-                    <a
-                      href={release.apkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl bg-[#008069] px-5 py-2.5 text-sm font-semibold text-white whitespace-nowrap transition-colors duration-150 hover:bg-[#006b57] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#008069]"
-                    >
-                      <DownloadArrowIcon className="h-4 w-4 shrink-0" />
-                      <span>
-                        {t.hero.downloadBtn} (v{toLocalizedDigits(release.latestVersionName, lang)})
-                      </span>
-                    </a>
-                    <a
-                      href={UPDATES_SITE_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 py-1 text-xs font-medium text-slate-500 hover:text-[#008069] transition-colors"
-                    >
-                      <span>{t.hero.fallbackBtn}</span>
-                      <ExternalArrowIcon className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
-                ) : (
+                <div className="flex flex-col gap-2.5">
                   <a
-                    href={UPDATES_SITE_URL}
+                    href={GITHUB_LATEST_APK_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl bg-[#008069] px-5 py-2.5 text-sm font-semibold text-white whitespace-nowrap transition-colors duration-150 hover:bg-[#006b57] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#008069]"
                   >
-                    <ExternalArrowIcon className="h-4 w-4 shrink-0" />
-                    <span>{t.hero.fallbackBtn}</span>
+                    <DownloadArrowIcon className="h-4 w-4 shrink-0" />
+                    <span>
+                      {t.hero.downloadBtn} {release ? `(v${toLocalizedDigits(release.latestVersionName, lang)})` : ''}
+                    </span>
                   </a>
-                )}
+                  <a
+                    href={UPDATES_SITE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 py-1 text-xs font-medium text-slate-500 hover:text-[#008069] transition-colors"
+                  >
+                    <span>{t.hero.fallbackBtn}</span>
+                    <ExternalArrowIcon className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
